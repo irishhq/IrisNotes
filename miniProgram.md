@@ -375,22 +375,24 @@ poster 广告图片
 controls 控件
 - 通过video组件显示视频(选择视频 相册 照相机)
 `<video src="{{src}}"></video>`
+```
 wx.chooseVideo({  #选择视频播放
-sourceType:["album","camera"],  #相册相机
-maxDuration:60,  #视频长度上限
-camera:["front","back"],  #相册可以用前摄像头后
-success:(result)=>{
-result.tempFilePath;  #视频路径
-}
+	sourceType:["album","camera"],  #相册相机
+	maxDuration:60,  #视频长度上限
+	camera:["front","back"],  #相册可以用前摄像头后
+	success:(result)=>{
+		result.tempFilePath;  #视频路径
+	}
 })
-- phonegap--混编
+```
+### phonegap--混编
 - 移动端技术[boostrap;vue;小程序..]
 以上移动技术不能调用移动端设备底层硬件加速传感器,
 录音;录视频
 -实现对底层硬件调用
-方式一:(苹果硬件调用 Object-C)
-:(安卓硬件调用 Java)
-方式二:类似通用平台软件 phonegap
+	1. 方式一:(苹果硬件调用 Object-C)
+			:(安卓硬件调用 Java)
+	2. 方式二:类似通用平台软件 phonegap
 js  -> phonegap -> 硬件
 3.4:phonegap--混编
 phonegap 是一种使用前端技术(js)创建移动平台，该平台
@@ -489,5 +491,6 @@ app.post("/"); 聊天
 -node.js 停止或者代码
 -ngrok.exe 重新申请域名
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5MzIzMzI5NCwtMTI2NzE1NDc4Ml19
+eyJoaXN0b3J5IjpbLTg3MTI4Nzk3NSwtNDkzMjMzMjk0LC0xMj
+Y3MTU0NzgyXX0=
 -->
