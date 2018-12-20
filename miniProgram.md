@@ -339,295 +339,155 @@ wx.request({
 	}
 })
 ```
-
-<![endif]-->
-
-功能一: 如果商家名称过长载取...
-
-css app.wxss
-
-功能二:上拉显示下一页
-
+- 功能一: 如果商家名称过长载取...
+`css app.wxss`
+- 功能二:上拉显示下一页
+```
 onReachBottom:{
-
-this.loadMore();
-
+	this.loadMore();
 }
-
-功能三:只能显示一页改成追加
-
-var list = this.data.list.concat(result.data.data);
-
-this.setData({list:list})
-
-功能四:如果显示最后一页不能发送请求..
-
-if(this.data.hasMore==false)return;
-
-功能五:如果没有下一页数据
-
-<view>己经没有更多的数据了</view>
-
-功能六:如果有下一页数据显示加载动画效果
-
+```
+- 功能三:只能显示一页改成追加
+`var list = this.data.list.concat(result.data.data);
+this.setData({list:list});`
+- 功能四:如果显示最后一页不能发送请求..
+`if(this.data.hasMore==false)return;`
+- 功能五:如果没有下一页数据
+`<view>己经没有更多的数据了</view>`
+- 功能六:如果有下一页数据显示加载动画效果
+```
 wx.showLoading({
-
-title:"正在加载数据"
-
+	title:"正在加载数据"
 });
-
 setTimeout(function(){
-
 wx.hideLoading();
-
 },1000)
-
-3.2:小程序--多媒体视频
-
-1:通过video组件显示视频
-
-<video src="视频路径"></video>
-
+```
+### 小程序--多媒体视频
+- 通过video组件显示视频
+`<video src="视频路径"></video>`
 默认视频:300px 宽 225px 高
-
 常见属性
-
 autoplay 自动播放
-
 loop 循环
-
 muted 静音
-
 poster 广告图片
-
 controls 控件
-
-2: 通过video组件显示视频(选择视频 相册 照相机)
-
-<video src="{{src}}"></video>
-
+- 通过video组件显示视频(选择视频 相册 照相机)
+`<video src="{{src}}"></video>`
 wx.chooseVideo({  #选择视频播放
-
 sourceType:["album","camera"],  #相册相机
-
 maxDuration:60,  #视频长度上限
-
 camera:["front","back"],  #相册可以用前摄像头后
-
 success:(result)=>{
-
 result.tempFilePath;  #视频路径
-
 }
-
 })
-
-3.3:phonegap--混编
-
--移动端技术[boostrap;vue;小程序..]
-
+- phonegap--混编
+- 移动端技术[boostrap;vue;小程序..]
 以上移动技术不能调用移动端设备底层硬件加速传感器,
-
 录音;录视频
-
 -实现对底层硬件调用
-
 方式一:(苹果硬件调用 Object-C)
-
 :(安卓硬件调用 Java)
-
 方式二:类似通用平台软件 phonegap
-
 js  -> phonegap -> 硬件
-
 3.4:phonegap--混编
-
 phonegap 是一种使用前端技术(js)创建移动平台，该平台
-
 封装很多JS API，可以使用前端js调用底层设备
-
-<![if !vml]>![](file:///C:/Users/web/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)<![endif]>
-
+(file:///C:/Users/web/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
 3.5:phonegap--创建环境
-
 (1)phonegap 服务器
-
-<![if !vml]>![](file:///C:/Users/web/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png)<![endif]>
-
+(file:///C:/Users/web/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png)
 1.1 上传程序模板
-
 1.2 点击phonegap 启动服务器
-
 +查找程序模板位置
-
 Open existiong PhoneGap project
-
 1.3 启动服务器
-
 http://172.163.100.145:3000/
-
 注意:如果状态条绿色启动成功
-
 (2)手机模拟器
-
 2.1: 夜神模拟器
-
 2.2: 上传android app
-
 2.3: 点击app连接phonegap
-
 3.6:phonegap--代码
-
 (1)device 硬件设备
-
 device.platform 当前平台
-
 device.uuid 设备编号
-
 device.version 设备版本
-
 (2)相机
-
 navigator.camera.getPicture(fn,fn,{quality:50});
-
 fn: 拍照成功 url 相片地址
-
 fn: 拍照失败
-
 quality:50 延迟时间
-
 (3)提示蜂鸣震动
-
 navigator.notification.alert(); 提示框
-
 navigator.notification.confirm("内容",function(e){}); 确认框
-
 navigator.notification.beep(次数) 蜂鸣器
-
 navigator.notification.vibrate(时长毫秒) 震动
-
 (4)录音
-
 navigator.device.capture.captureAudio(fn,fn,{limit:2});
-
 fn 成功录音结束 list
-
 fn 录音失败
-
 {limit:2} 一次录二段音频
-
 (5)加速传感器
-
 navigator.accelerometer.getCurrentAcceleration(
-
 fn,fn
-
 );
-
 fn: 获取成功 参数 x;y;z
-
 fn: 获取失败
-
 3.6:微信公众平订阅号
-
 (1)概念订阅号
-
 -微信小游戏: 高级游戏引擎
-
 [Cocos Creator:Egret;Layabox]
-
 -微信小程序
-
 [2018初始年]
-
 -订阅号:推荐三年
-
 个人媒体平台:每天向粉丝发送一条消息
-
 消息:[文章;音频;视频]
-
 "菜刀dui"," 菜刀dui 2"
-
 -订阅号分类
-
 -八卦天天有
-
 -胡说(历史;内幕...)
-
 -小众(白骨精)
-
 -热门:"_咪蒙_" 情感
-
 -自己创建订阅号
-
 注册:邮箱 身份证号
-
 (2)订阅号测试帐户开发->聊天工具(不是聊天机器人)
-
 开发者工具->公众平台测试帐户
-
 (1)创建服务器并且合法域名[内网穿透工具]
-
 ngrok.exe  http  3000
-
 https://743f7eb4.ngrok.io
-
 (2)下载第三方微信聊天模块
-
 (3)使用聊天模块调用模块方法完成聊天操作
-
 let config = {
-
 appid:"wx31c2f70c58017a68 "
-
 token:"weixin"
-
 encodingAESKey:""
-
 };
-
 app.post("/",wechat(config,(req,res)=>{
-
 req.weixin.Content 服务器发送文字
-
 res.reply(返回文字);
-
 }));
-
 (4)在测试帐户中
-
 **接口配置信息**
-
 url:[合法域名]  https://743f7eb4.ngrok.io
-
 token:[weixin] 在开发配置项 token一致
-
 **JS****接口安全域名修改**
-
 url:[合法域名]  743f7eb4.ngrok.io
-
 (5)邀请其它用户测试
-
 <![if !vml]>![](file:///C:/Users/web/AppData/Local/Temp/msohtmlclip1/01/clip_image005.jpg)<![endif]>
-
 下载
-
 内网穿透工具: https://ngrok.com/
-
 第三方模块: npm i wechat
-
 常见错误:
-
 (1):在第4步之前启动 node.js 服务器
 测试连接发送给node.js get 请求
 app.get("/"); 测试连接
 app.post("/"); 聊天
-
 (2)服务器故障
-
 -node.js 停止或者代码
-
 -ngrok.exe 重新申请域名
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjcxNTQ3ODJdfQ==
+eyJoaXN0b3J5IjpbLTQ5MzIzMzI5NCwtMTI2NzE1NDc4Ml19
 -->
